@@ -1,0 +1,71 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+source "$DIR/vars"
+
+ACTION=""
+
+if [ -d "$NGINX_SOURCES" ]
+then
+  ACTION="updating NGINX sources"
+
+  echo "$ACTION..."
+
+  cd "$NGINX_SOURCES" && git pull origin master > /dev/null 2>&1 && make clean
+else
+  ACTION="obtaining NGINX sources"
+
+  echo "$ACTION..."
+
+  git clone "$NGINX_GIT" "$NGINX_SOURCES" > /dev/null 2>&1
+fi
+
+echo "done $ACTION"
+
+cd $NGINX_SOURCES && \
+  ./auto/configure \
+    --prefix="$NGINX_PREFIX" \
+    --sbin-path="$NGINX_SBIN_PATH" \
+    --modules-path="$NGINX_MODULES_PATH" \
+    --conf-path="$NGINX_CONF_PATH" \
+    --error-log-path="$NGINX_ERROR_LOG_PATH" \
+    --pid-path="$NGINX_PID_PATH" \
+    --http-log-path="$NGINX_HTTP_LOG_PATH" \
+    --lock-path="$NGINX_LOC_PATH" \
+    --user="$NGINX_USER" \
+    --group="$NGINX_GROUP" \
+    --build="$NGINX_BUILD" \
+    --without-select_module \
+    --with-poll_module \
+    --with-threads \
+    --with-http_ssl_module \
+    --with-http_v2_module \
+    --without-http_upstream_hash_module \
+    --without-http_upstream_ip_hash_module \
+    --without-http_upstream_least_conn_module \
+    --without-http_upstream_random_module \
+    --without-http_upstream_keepalive_module \
+    --without-http_upstream_zone_module \
+    --without-http-cache \
+    --without-mail_pop3_module \
+    --without-mail_imap_module \
+    --without-mail_smtp_module \
+    --without-stream_limit_conn_module \
+    --without-stream_access_module \
+    --without-stream_geo_module \
+    --without-stream_map_module \
+    --without-stream_split_clients_module \
+    --without-stream_return_module \
+    --without-stream_upstream_hash_module \
+    --without-stream_upstream_least_conn_module \
+    --without-stream_upstream_random_module \
+    --without-stream_upstream_zone_module \
+    --without-http_rewrite_module \
+    --with-openssl="$OPENSSL_SOURCES" \
+    --with-openssl-opt=enable-ec_nistp_64_gcc_128 \
+    --with-openssl-opt=no-nextprotoneg \
+    --with-openssl-opt=no-weak-ssl-ciphers \
+    --with-openssl-opt=no-ssl3 \
+    --with-zlib="$ZLIB_SOURCES" \
+  && make && make install

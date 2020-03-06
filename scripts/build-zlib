@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+source "$DIR/vars"
+
+ACTION=""
+
+if [ -d "$ZLIB_SOURCES" ]
+then
+  ACTION="updating Zlib sources"
+
+  echo "$ACTION..."
+
+  cd "$ZLIB_SOURCES" && git pull origin master > /dev/null 2>&1 && make distclean
+else
+  ACTION="obtaining Zlib sources"
+
+  echo "$ACTION..."
+
+  git clone "$ZLIB_GIT" "$ZLIB_SOURCES" > /dev/null 2>&1
+fi
+
+echo "done $ACTION"
+
+
+cd "$ZLIB_SOURCES" \
+  && ./configure \
+    --prefix="$ZLIB_PREFIX" \
+  && make \
+  && make install

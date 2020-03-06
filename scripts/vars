@@ -1,0 +1,30 @@
+#!/bin/bash
+
+export CWD="$(pwd)"
+export SOURCES="$CWD/sources"
+export DISTRO="$CWD/distro"
+
+PREFIX="$DISTRO/usr/local"
+
+export ZLIB_SOURCES="$SOURCES/zlib"
+export ZLIB_PREFIX="$PREFIX"
+
+export OPENSSL_SOURCES="$SOURCES/openssl"
+export OPENSSL_PREFIX="$PREFIX"
+
+export NGINX_SOURCES="$SOURCES/nginx"
+export NGINX_PREFIX="$DISTRO/usr/share/nginx"
+export NGINX_SBIN_PATH="$DISTRO/usr/sbin/nginx"
+export NGINX_MODULES_PATH="$DISTRO/usr/lib/nginx/modules"
+export NGINX_CONF_PATH="$DISTRO/etc/nginx/nginx.conf"
+export NGINX_ERROR_LOG_PATH="$DISTRO/var/log/nginx/error.log"
+export NGINX_HTTP_LOG_PATH="$DISTRO/var/log/nginx/access.log"
+export NGINX_PID_PATH="$DISTRO/run/nginx.pid"
+export NGINX_LOC_PATH="$DISTRO/var/lock/nginx.lock"
+export NGINX_USER="www-data"
+export NGINX_GROUP="www-data"
+export NGINX_BUILD="Advertima"
+
+export NGINX_GIT="https://github.com/nginx/nginx.git"
+export OPENSSL_GIT="https://github.com/openssl/openssl.git"
+export ZLIB_GIT="https://github.com/madler/zlib.git"
