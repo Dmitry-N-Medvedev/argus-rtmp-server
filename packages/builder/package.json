@@ -1,0 +1,23 @@
+{
+  "name": "builder",
+  "version": "0.0.0",
+  "description": "builds nginx + openssl + zlib",
+  "main": "build.mjs",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "keywords": [
+    "builder",
+    "nginx",
+    "openssl",
+    "zlib"
+  ],
+  "author": "Dmitry N. Medvedev <dmitry.medvedev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "execa": "^4.0.0",
+    "isomorphic-git": "^1.1.6",
+    "which": "^2.0.2"
+  }
+}

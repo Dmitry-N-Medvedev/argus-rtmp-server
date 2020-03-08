@@ -1,0 +1,29 @@
+{
+  "name": "argus-rtmp-server",
+  "version": "0.0.0",
+  "description": "building argus rtmp server",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 13.10.1",
+    "pnpm": ">= 4.11.3"
+  },
+  "engineStrict": true,
+  "scripts": {
+    "build": "node --unhandled-rejections=strict --no-warnings packages/builder/build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dmitry-N-Medvedev/argus-rtmp-server.git"
+  },
+  "keywords": [
+    "argus",
+    "rtmp",
+    "server"
+  ],
+  "author": "Dmitry N. Medvedev <dmitry.medvedev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dmitry-N-Medvedev/argus-rtmp-server/issues"
+  },
+  "homepage": "https://github.com/Dmitry-N-Medvedev/argus-rtmp-server#readme"
+}
