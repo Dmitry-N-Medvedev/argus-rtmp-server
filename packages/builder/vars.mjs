@@ -43,7 +43,8 @@ export const vars=({
         ],
       },
       'nginx-rtmp-module': {
-        GIT: "https://github.com/arut/nginx-rtmp-module.git",
+        // GIT: "https://github.com/chetandhembre/nginx-rtmp-module.git",
+        GIT: "https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git",
         SOURCES: resolve(_sources, "nginx-rtmp-module"),
         NGINX_SOURCES: resolve(_sources, "nginx"),
         COMMANDS: [
@@ -118,7 +119,9 @@ export const vars=({
             `--add-module=${resolve(_sources, "nginx-rtmp-module")}`,
           ]],
           ['make', []],
-          ['make', ['install']],
+          ['make', [
+            'install',
+          ]],
         ],
       },
     };
