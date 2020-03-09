@@ -16,6 +16,8 @@ const build = async ({
   });
 
   if (should_rebuild === true) {
+    console.debug(JSON.stringify(settings));
+
     try {
       return compile({
         commands: settings.COMMANDS,
