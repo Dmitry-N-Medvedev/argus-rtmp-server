@@ -1,0 +1,24 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+source "$DIR/vars"
+
+ACTION=""
+
+if [ -d "$NGINX_RTMP_MODULE_SOURCES" ]
+then
+  ACTION="updating NGINX-RTMP-MODULE sources"
+
+  echo "$ACTION..."
+
+  cd "$NGINX_RTMP_MODULE_SOURCES" && git pull origin master > /dev/null 2>&1 && make clean
+else
+  ACTION="obtaining NGINX-RTMP-MODULE sources"
+
+  echo "$ACTION..."
+
+  git clone "$NGINX_RTMP_MODULE_GIT" "$NGINX_RTMP_MODULE_SOURCES" > /dev/null 2>&1
+fi
+
+echo "done $ACTION"

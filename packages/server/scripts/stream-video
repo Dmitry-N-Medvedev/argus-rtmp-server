@@ -1,0 +1,6 @@
+#!/bin/bash
+
+VIDEO="./packages/server/videos/248065570/248065570.avi"
+FFMPEG=$(which ffmpeg)
+
+$FFMPEG -loglevel verbose -re -i $VIDEO  -vcodec libx264 -vprofile baseline -acodec libmp3lame -ar 44100 -ac 1 -f flv rtmp://localhost:1935/hls/movie

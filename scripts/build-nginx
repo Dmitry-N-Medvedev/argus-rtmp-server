@@ -68,4 +68,6 @@ cd $NGINX_SOURCES && \
     --with-openssl-opt=no-weak-ssl-ciphers \
     --with-openssl-opt=no-ssl3 \
     --with-zlib="$ZLIB_SOURCES" \
-  && make && make install
+    --add-module="$NGINX_RTMP_MODULE_SOURCES"
+
+cd $NGINX_SOURCES && make && make install

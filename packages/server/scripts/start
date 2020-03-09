@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DIR=$(pwd)
+NGINX="$DIR/distro/usr/sbin/nginx"
+CONF="$DIR/packages/server/conf/nginx-rtmp.conf"
+
+echo "start NGINX from $NGINX"
+
+$NGINX -c $CONF
+
+# to stop NGINX
+# ./distro/usr/sbin/nginx -s quit

@@ -1,3 +1,5 @@
 /sources/
 /distro/
 node_modules
+*.avi
+*.DS_Store

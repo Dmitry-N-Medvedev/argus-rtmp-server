@@ -25,6 +25,10 @@ export NGINX_USER="www-data"
 export NGINX_GROUP="www-data"
 export NGINX_BUILD="Advertima"
 
+export NGINX_RTMP_MODULE_SOURCES="$SOURCES/nginx-rtmp-module"
+
 export NGINX_GIT="https://github.com/nginx/nginx.git"
 export OPENSSL_GIT="https://github.com/openssl/openssl.git"
 export ZLIB_GIT="https://github.com/madler/zlib.git"
+export NGINX_RTMP_MODULE_GIT="https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git"
+# export NGINX_RTMP_MODULE_GIT="https://github.com/chetandhembre/nginx-rtmp-module.git"
